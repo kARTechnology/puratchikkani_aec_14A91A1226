@@ -147,13 +147,13 @@ public class StudentGroup implements StudentArrayOperation {
 	public void bubbleSort() {
 		Student temp = null;
 		for (int i = 0; i < this.students.length; i++) {
-			for (int j = 1; j < this.students.length - i; j++) {
-				if (this.students[j - 1] != null && this.students[j] != null)
+			for (int j = 0; j < this.students.length - i - 1; j++) {
+				if (this.students[j] != null && this.students[i] != null)
 
-					if (this.students[j - 1].compareTo(this.students[j]) >=1) {
-						temp = this.students[j - 1];
-						this.students[j - 1] = this.students[j];
-						this.students[j] = temp;
+					if (this.students[j].compareTo(this.students[i]) >= 1) {
+						temp = this.students[j];
+						this.students[j] = this.students[i];
+						this.students[i] = temp;
 					}
 			}
 		}
@@ -283,5 +283,5 @@ public class StudentGroup implements StudentArrayOperation {
 		cal.setTime(date);
 		cal.add(Calendar.DATE, days); // minus number would decrement the days
 		return cal.getTime();
-	} 
+	}
 }
