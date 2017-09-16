@@ -105,8 +105,9 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 
 		int index = getStudentIndex(this.students, student);
-		if(index==-1) throw new IllegalArgumentException("Student not exist"); 
-		remove(index); 
+		if (index == -1)
+			throw new IllegalArgumentException("Student not exist");
+		remove(index);
 	}
 
 	@Override
@@ -115,17 +116,18 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
 			throw new IllegalArgumentException();
-		
-		this.students = removeStudents(this.students, 0,index );
-}
+
+		this.students = removeStudents(this.students, 0, index);
+	}
 
 	@Override
 	public void removeFromElement(Student student) {
 		if (student == null)
 			throw new IllegalArgumentException();
 		int index = getStudentIndex(this.students, student);
-		if(index==-1) throw new IllegalArgumentException("Student not exist"); 
-		removeFromIndex(index); 
+		if (index == -1)
+			throw new IllegalArgumentException("Student not exist");
+		removeFromIndex(index);
 	}
 
 	@Override
@@ -134,16 +136,17 @@ public class StudentGroup implements StudentArrayOperation {
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
 			throw new IllegalArgumentException();
-		this.students = removeStudents(this.students, index,this.students.length );
-}
+		this.students = removeStudents(this.students, index, this.students.length);
+	}
 
 	@Override
 	public void removeToElement(Student student) {
 		if (student == null)
 			throw new IllegalArgumentException();
 		int index = getStudentIndex(this.students, student);
-		if(index==-1) throw new IllegalArgumentException("Student not exist"); 
-		removeToIndex(index); 
+		if (index == -1)
+			throw new IllegalArgumentException("Student not exist");
+		removeToIndex(index);
 	}
 
 	@Override
@@ -191,11 +194,16 @@ public class StudentGroup implements StudentArrayOperation {
 	public Student getNextStudent(Student student) {
 		if (student == null)
 			throw new IllegalArgumentException();
-		
-		return null;
-	}
+		int index = getStudentIndex(this.students, student);
+		if (index == -1)
+			throw new IllegalArgumentException("Student not exist");
+		index = index + 1;
+		if (index >= students.length)
+			throw new IllegalArgumentException();
+		return students[index];
+ 	}
 
-	private Student[] addStudent (Student[] a, int pos, Student student) {
+	private Student[] addStudent(Student[] a, int pos, Student student) {
 		Student[] result = new Student[a.length + 1];
 		for (int i = 0; i < pos; i++)
 			result[i] = a[i];
@@ -204,14 +212,13 @@ public class StudentGroup implements StudentArrayOperation {
 			result[i] = a[i - 1];
 		return result;
 	}
-	
+
 	private Student[] removeStudents(Student[] a, int from, int to) {
-		Student[] result = new Student[to-from];
+		Student[] result = new Student[to - from];
 		for (int i = to; i < from; i++)
 			result[i] = a[i];
- 		return result;
+		return result;
 	}
-	
 
 	private int getStudentIndex(Student[] a, Student student) {
 		for (int i = 0; i < a.length; i++)
