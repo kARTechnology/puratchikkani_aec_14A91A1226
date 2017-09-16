@@ -1,4 +1,7 @@
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * A fix-sized array of students array length should always be equal to the
@@ -156,8 +159,12 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getByBirthDate(Date date) {
-		// Add your implementation here
-		return null;
+		List<Student> list = new ArrayList<Student>();
+		for (Student s : this.students) { 
+			if (s.getBirthDate() == date)
+				list.add(s);
+		}
+		return (Student[]) list.toArray();
 	}
 
 	@Override
@@ -201,7 +208,7 @@ public class StudentGroup implements StudentArrayOperation {
 		if (index >= students.length)
 			throw new IllegalArgumentException();
 		return students[index];
- 	}
+	}
 
 	private Student[] addStudent(Student[] a, int pos, Student student) {
 		Student[] result = new Student[a.length + 1];
