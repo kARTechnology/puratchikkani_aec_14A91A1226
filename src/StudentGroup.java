@@ -42,7 +42,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public Student getStudent(int index)  {
+	public Student getStudent(int index) throws IllegalArgumentException {
 		if (index < 0)
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
@@ -51,7 +51,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void setStudent(Student student, int index)  {
+	public void setStudent(Student student, int index) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		if (index < 0)
@@ -62,7 +62,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void addFirst(Student student)  {
+	public void addFirst(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		this.students = addStudent(this.students, 0, student);
@@ -70,14 +70,14 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void addLast(Student student)  {
+	public void addLast(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		this.students = addStudent(this.students, this.students.length, student);
 	}
 
 	@Override
-	public void add(Student student, int index)  {
+	public void add(Student student, int index) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		if (index < 0)
@@ -88,7 +88,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void remove(int index)  {
+	public void remove(int index) throws IllegalArgumentException {
 		if (index < 0)
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
@@ -105,7 +105,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void remove(Student student)  {
+	public void remove(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 
@@ -116,7 +116,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void removeFromIndex(int index)  {
+	public void removeFromIndex(int index) throws IllegalArgumentException {
 		if (index < 0)
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
@@ -126,7 +126,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void removeFromElement(Student student)  {
+	public void removeFromElement(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		int index = getStudentIndex(this.students, student);
@@ -136,7 +136,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void removeToIndex(int index)  {
+	public void removeToIndex(int index) throws IllegalArgumentException {
 		if (index < 0)
 			throw new IllegalArgumentException();
 		else if (index >= students.length)
@@ -145,7 +145,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public void removeToElement(Student student)  {
+	public void removeToElement(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		int index = getStudentIndex(this.students, student);
@@ -160,20 +160,20 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public Student[] getByBirthDate(Date date)  {
+	public Student[] getByBirthDate(Date date) throws IllegalArgumentException {
 		if (date == null)
 			throw new IllegalArgumentException();
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
-			if (s.getBirthDate() == date)
+			if (s.getBirthDate().compareTo(date)<=0)
 				list.add(s);
 		}
 		return (Student[]) list.toArray();
 	}
 
 	@Override
-	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate)  {
+	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) throws IllegalArgumentException {
 		if (firstDate == null || lastDate == null)
 			throw new IllegalArgumentException();
 
@@ -192,7 +192,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public int getCurrentAgeByDate(int indexOfStudent)  {
+	public int getCurrentAgeByDate(int indexOfStudent) throws IllegalArgumentException {
 		if (indexOfStudent < 0)
 			throw new IllegalArgumentException();
 		else if (indexOfStudent >= students.length)
@@ -220,7 +220,7 @@ public class StudentGroup implements StudentArrayOperation {
 	}
 
 	@Override
-	public Student getNextStudent(Student student)  {
+	public Student getNextStudent(Student student) throws IllegalArgumentException {
 		if (student == null)
 			throw new IllegalArgumentException();
 		int index = getStudentIndex(this.students, student);
