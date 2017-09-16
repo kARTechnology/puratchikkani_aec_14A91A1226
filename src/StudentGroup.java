@@ -148,13 +148,15 @@ public class StudentGroup implements StudentArrayOperation {
 		Student temp = null;
 		for (int i = 0; i < this.students.length; i++) {
 			for (int j = 1; j < this.students.length - i; j++) {
+				if(this.students[j - 1]  !=null && this.students[j] !=null)
+				
+				
 				if (this.students[j - 1].getId() > this.students[j].getId()) {
 					temp = this.students[j - 1];
 					this.students[j - 1] = this.students[j];
 					this.students[j] = temp;
 				}
 			}
-
 		}
 	}
 
@@ -253,7 +255,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	private static int getStudentIndex(Student[] a, Student student) {
 		for (int i = 0; i < a.length; i++)
-			if (a[i].equals(student))
+			if (a[i]!=null && a[i].equals(student))
 				return i;
 		return -1;
 	}
