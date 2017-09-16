@@ -6,12 +6,12 @@ public class Main {
 		
  	StudentGroup s = new StudentGroup(10);	
 	Student stu1 = new Student(0, "Karthi Keyan", new Date(), 55);
-	Student stu2 = new Student(2, "sdf", new Date(), 55);
-	Student stu3 = new Student(4, "xn", new Date(), 55);
-	Student stu4 = new Student(5, "cvb", new Date(), 55);
-	Student stu5 = new Student(2, "ert", new Date(2323223232L), 55);
-	Student stu6 = new Student(4, "cvb", new Date(), 55);
-	Student stu7 = new Student(8, "dfg", new Date(), 55);
+	Student stu2 = new Student(2, "sdf", new Date(), 44);
+	Student stu3 = new Student(4, "xn", new Date(), 33);
+	Student stu4 = new Student(5, "cvb", new Date(), 56);
+	Student stu5 = new Student(2, "ert", new Date(2323223232L), 88);
+	Student stu6 = new Student(4, "cvb", new Date(), 22);
+	Student stu7 = new Student(8, "dfg", new Date(), 44);
 	s.add(stu1, 1);
 	s.addFirst(stu2);
 	s.remove(stu2);
@@ -47,6 +47,11 @@ s.removeToElement(stu5);
 	//s.setStudents(students);
  	 
 for (Student st : s.getStudents()) 
+{
+	if(st!=null)
+	System.out.println(st.getFullName()); 
+}
+for (Student st : s.	   getStudentsWithMaxAvgMark()) 
 {
 	if(st!=null)
 	System.out.println(st.getFullName()); 

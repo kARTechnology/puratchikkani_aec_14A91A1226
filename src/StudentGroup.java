@@ -223,28 +223,22 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		double tot = 0;
-		int count = 0;
-		for (Student s : this.students) 
-		 
-			if (s != null) {
-				tot += s.getAvgMark();
-				count++;
-			}
- 
-	double	avg =   tot / count;
-	
-	
-	List<Student> list = new ArrayList<Student>();
-	for (int i = 0; i < this.students.length; i++) {
-		if (getStudent(i) != null)
-			if (getStudent(i).getAvgMark()==avg)
-				list.add(students[i]);
-	}
-	return list.toArray(new Student[list.size()]);
+		double max = -1;
+		for (Student s : this.students)
 
-	
-	
+			if (s != null) {
+				if (s.getAvgMark() > max)
+					max = s.getAvgMark();
+			}
+
+		List<Student> list = new ArrayList<Student>();
+		for (int i = 0; i < this.students.length; i++) {
+			if (getStudent(i) != null)
+				if (getStudent(i).getAvgMark() == max)
+					list.add(students[i]);
+		}
+		return list.toArray(new Student[list.size()]);
+
 	}
 
 	@Override
