@@ -86,13 +86,13 @@ public class StudentGroup implements StudentArrayOperation {
 	public void remove(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
 			throw new IllegalArgumentException();
-
+int j=0;
 		Student[] result = new Student[this.students.length - 1];
 		for (int i = 0; i < index; i++)
-			result[i] = this.students[i];
+			result[j++] = this.students[i];
 
 		for (int i = index + 1; i < this.students.length; i++)
-			result[i] = this.students[i];
+			result[j++] = this.students[i];
 
 		this.students = result;
 	}
