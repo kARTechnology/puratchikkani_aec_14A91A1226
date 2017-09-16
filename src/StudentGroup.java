@@ -2,6 +2,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -166,7 +167,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
-			if (s.getBirthDate().compareTo(date)<=0)
+			if (s.getBirthDate().compareTo(date) <= 0)
 				list.add(s);
 		}
 		return (Student[]) list.toArray();
@@ -187,8 +188,11 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
-		// Add your implementation here
-		return null;
+		if (date == null)
+			throw new IllegalArgumentException();
+
+		return getBetweenBirthDates(date, addDays(date, days));
+
 	}
 
 	@Override
@@ -254,6 +258,13 @@ public class StudentGroup implements StudentArrayOperation {
 			if (a[i].equals(student))
 				return i;
 		return -1;
+	}
+
+	private Date addDays(Date date, int days) {
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		cal.add(Calendar.DATE, days); // minus number would decrement the days
+		return cal.getTime();
 	}
 
 }
