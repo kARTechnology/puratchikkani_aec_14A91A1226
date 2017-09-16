@@ -214,17 +214,37 @@ public class StudentGroup implements StudentArrayOperation {
 	public Student[] getStudentsByAge(int age) {
 		List<Student> list = new ArrayList<Student>();
 		for (int i = 0; i < this.students.length; i++) {
-			if(getStudent(i)!=null)
-			if (getCurrentAgeByDate(i) == age)
-				list.add(students[i]);
+			if (getStudent(i) != null)
+				if (getCurrentAgeByDate(i) == age)
+					list.add(students[i]);
 		}
 		return list.toArray(new Student[list.size()]);
 	}
 
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
-		// Add your implementation here
-		return null;
+		double tot = 0;
+		int count = 0;
+		for (Student s : this.students) 
+		 
+			if (s != null) {
+				tot += s.getAvgMark();
+				count++;
+			}
+ 
+	double	avg =   tot / count;
+	
+	
+	List<Student> list = new ArrayList<Student>();
+	for (int i = 0; i < this.students.length; i++) {
+		if (getStudent(i) != null)
+			if (getStudent(i).getAvgMark()==avg)
+				list.add(students[i]);
+	}
+	return list.toArray(new Student[list.size()]);
+
+	
+	
 	}
 
 	@Override

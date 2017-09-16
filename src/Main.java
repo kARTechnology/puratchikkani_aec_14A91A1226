@@ -35,7 +35,7 @@ public class Main {
 	s.getStudent(3);
 	s.getStudents();
 	s.getStudentsByAge(19);
-	//s.getStudentsWithMaxAvgMark();
+	 s.getStudentsWithMaxAvgMark();
 	//s.remove(1);
 	//s.remove(stu3);
 	//s.removeFromElement(stu4);
