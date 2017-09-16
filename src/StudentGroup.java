@@ -150,7 +150,7 @@ public class StudentGroup implements StudentArrayOperation {
 			for (int j = 1; j < this.students.length - i; j++) {
 				if (this.students[j - 1] != null && this.students[j] != null)
 
-					if (this.students[j - 1].getId() > this.students[j].getId()) {
+					if (this.students[j - 1].compareTo(this.students[j]) >=1) {
 						temp = this.students[j - 1];
 						this.students[j - 1] = this.students[j];
 						this.students[j] = temp;
@@ -283,6 +283,5 @@ public class StudentGroup implements StudentArrayOperation {
 		cal.setTime(date);
 		cal.add(Calendar.DATE, days); // minus number would decrement the days
 		return cal.getTime();
-	}
-
+	} 
 }
