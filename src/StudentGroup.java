@@ -167,10 +167,11 @@ int j=0;
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
-			if (s.getBirthDate().compareTo(date) <= 0)
+			if(s!=null)
+if (s.getBirthDate().compareTo(date) <= 0)
 				list.add(s);
 		}
-		return (Student[]) list.toArray();
+		return   list.toArray(new Student[list.size()]);
 	}
 
 	@Override
@@ -180,11 +181,12 @@ int j=0;
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
+			if(s!=null)
 			if (s.getBirthDate().compareTo(firstDate) >= 0 && s.getBirthDate().compareTo(lastDate) <= 0)
 				list.add(s);
 		}
-		return (Student[]) list.toArray();
-	}
+		return   list.toArray(new Student[list.size()]);
+		}
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
