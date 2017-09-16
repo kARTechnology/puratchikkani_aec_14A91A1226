@@ -36,11 +36,12 @@ public class Main {
 	s.getStudents();
 	s.getStudentsByAge(19);
 	//s.getStudentsWithMaxAvgMark();
-	s.remove(1);
-	s.remove(stu3);
-	s.removeFromElement(stu4);
-	s.removeFromIndex(1);
-	s.removeToElement(stu5);
+	//s.remove(1);
+	//s.remove(stu3);
+	//s.removeFromElement(stu4);
+//	s.removeFromIndex(1);
+	s.add(stu5, 1);
+s.removeToElement(stu5);
 	s.removeToIndex(2);
 	s.setStudent(stu7, 4);
 	//s.setStudents(students);

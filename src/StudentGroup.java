@@ -86,7 +86,7 @@ public class StudentGroup implements StudentArrayOperation {
 	public void remove(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
 			throw new IllegalArgumentException();
-int j=0;
+		int j = 0;
 		Student[] result = new Student[this.students.length - 1];
 		for (int i = 0; i < index; i++)
 			result[j++] = this.students[i];
@@ -148,14 +148,13 @@ int j=0;
 		Student temp = null;
 		for (int i = 0; i < this.students.length; i++) {
 			for (int j = 1; j < this.students.length - i; j++) {
-				if(this.students[j - 1]  !=null && this.students[j] !=null)
-				
-				
-				if (this.students[j - 1].getId() > this.students[j].getId()) {
-					temp = this.students[j - 1];
-					this.students[j - 1] = this.students[j];
-					this.students[j] = temp;
-				}
+				if (this.students[j - 1] != null && this.students[j] != null)
+
+					if (this.students[j - 1].getId() > this.students[j].getId()) {
+						temp = this.students[j - 1];
+						this.students[j - 1] = this.students[j];
+						this.students[j] = temp;
+					}
 			}
 		}
 	}
@@ -167,11 +166,11 @@ int j=0;
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
-			if(s!=null)
-if (s.getBirthDate().compareTo(date) <= 0)
-				list.add(s);
+			if (s != null)
+				if (s.getBirthDate().compareTo(date) <= 0)
+					list.add(s);
 		}
-		return   list.toArray(new Student[list.size()]);
+		return list.toArray(new Student[list.size()]);
 	}
 
 	@Override
@@ -181,12 +180,12 @@ if (s.getBirthDate().compareTo(date) <= 0)
 
 		List<Student> list = new ArrayList<Student>();
 		for (Student s : this.students) {
-			if(s!=null)
-			if (s.getBirthDate().compareTo(firstDate) >= 0 && s.getBirthDate().compareTo(lastDate) <= 0)
-				list.add(s);
+			if (s != null)
+				if (s.getBirthDate().compareTo(firstDate) >= 0 && s.getBirthDate().compareTo(lastDate) <= 0)
+					list.add(s);
 		}
-		return   list.toArray(new Student[list.size()]);
-		}
+		return list.toArray(new Student[list.size()]);
+	}
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
@@ -203,6 +202,8 @@ if (s.getBirthDate().compareTo(date) <= 0)
 			throw new IllegalArgumentException();
 		else if (indexOfStudent >= students.length)
 			throw new IllegalArgumentException();
+		if (getStudent(indexOfStudent) == null)
+			throw new IllegalArgumentException("Student not exist");
 		LocalDate date1 = new java.sql.Date(getStudent(indexOfStudent).getBirthDate().getTime()).toLocalDate();
 		LocalDate date2 = new java.sql.Date(new Date().getTime()).toLocalDate();
 		return Period.between(date1, date2).getYears();
@@ -213,10 +214,11 @@ if (s.getBirthDate().compareTo(date) <= 0)
 	public Student[] getStudentsByAge(int age) {
 		List<Student> list = new ArrayList<Student>();
 		for (int i = 0; i < this.students.length; i++) {
+			if(getStudent(i)!=null)
 			if (getCurrentAgeByDate(i) == age)
 				list.add(students[i]);
 		}
-		return (Student[]) list.toArray();
+		return list.toArray(new Student[list.size()]);
 	}
 
 	@Override
@@ -257,7 +259,7 @@ if (s.getBirthDate().compareTo(date) <= 0)
 
 	private static int getStudentIndex(Student[] a, Student student) {
 		for (int i = 0; i < a.length; i++)
-			if (a[i]!=null && a[i].equals(student))
+			if (a[i] != null && a[i].equals(student))
 				return i;
 		return -1;
 	}
