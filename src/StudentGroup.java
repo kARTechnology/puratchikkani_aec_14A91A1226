@@ -169,9 +169,12 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
-		// Add your implementation here
-		return null;
-	}
+		List<Student> list = new ArrayList<Student>();
+		for (Student s : this.students) { 
+			if (s.getBirthDate().compareTo(firstDate) >= 0 &&  s.getBirthDate().compareTo(lastDate) <= 0)
+				list.add(s);
+		}
+		return (Student[]) list.toArray();	}
 
 	@Override
 	public Student[] getNearBirthDate(Date date, int days) {
