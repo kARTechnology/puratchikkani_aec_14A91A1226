@@ -193,7 +193,7 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) throws IllegalArgumentException {
-		if (indexOfStudent <= 0)
+		if (indexOfStudent < 0)
 			throw new IllegalArgumentException();
 		else if (indexOfStudent >= students.length)
 			throw new IllegalArgumentException();
