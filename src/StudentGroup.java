@@ -236,7 +236,7 @@ public class StudentGroup implements StudentArrayOperation {
 		return students[index];
 	}
 
-	private Student[] addStudent(Student[] a, int pos, Student student) {
+	private static Student[] addStudent(Student[] a, int pos, Student student) {
 		Student[] result = new Student[a.length + 1];
 		for (int i = 0; i < pos; i++)
 			result[i] = a[i];
@@ -246,21 +246,21 @@ public class StudentGroup implements StudentArrayOperation {
 		return result;
 	}
 
-	private Student[] removeStudents(Student[] a, int from, int to) {
+	private static Student[] removeStudents(Student[] a, int from, int to) {
 		Student[] result = new Student[to - from];
 		for (int i = to; i < from; i++)
 			result[i] = a[i];
 		return result;
 	}
 
-	private int getStudentIndex(Student[] a, Student student) {
+	private static int getStudentIndex(Student[] a, Student student) {
 		for (int i = 0; i < a.length; i++)
 			if (a[i].equals(student))
 				return i;
 		return -1;
 	}
 
-	private Date addDays(Date date, int days) {
+	private static Date addDays(Date date, int days) {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(date);
 		cal.add(Calendar.DATE, days); // minus number would decrement the days
