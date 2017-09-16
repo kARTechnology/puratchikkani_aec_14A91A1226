@@ -45,7 +45,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getStudent(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();
 		return students[index];
 	}
 
@@ -54,8 +54,8 @@ public class StudentGroup implements StudentArrayOperation {
 		if (student == null)
 			throw new IllegalArgumentException();
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
- 		this.students[index] = student;
+			throw new IllegalArgumentException();
+		this.students[index] = student;
 	}
 
 	@Override
@@ -78,14 +78,14 @@ public class StudentGroup implements StudentArrayOperation {
 		if (student == null)
 			throw new IllegalArgumentException();
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();
 		this.students = addStudent(this.students, index, student);
 	}
 
 	@Override
 	public void remove(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();
 
 		Student[] result = new Student[this.students.length - 1];
 		for (int i = 0; i < index; i++)
@@ -111,7 +111,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeFromIndex(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();
 
 		this.students = removeStudents(this.students, 0, index);
 	}
@@ -129,7 +129,7 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public void removeToIndex(int index) throws IllegalArgumentException {
 		if (index < 0 || index >= students.length)
- 			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();
 		this.students = removeStudents(this.students, index, this.students.length);
 	}
 
@@ -145,7 +145,17 @@ public class StudentGroup implements StudentArrayOperation {
 
 	@Override
 	public void bubbleSort() {
-		// Add your implementation here
+		Student temp = null;
+		for (int i = 0; i < this.students.length; i++) {
+			for (int j = 1; j < this.students.length - i; j++) {
+				if (this.students[j - 1].getId() > this.students[j].getId()) {
+					temp = this.students[j - 1];
+					this.students[j - 1] = this.students[j];
+					this.students[j] = temp;
+				}
+			}
+
+		}
 	}
 
 	@Override
